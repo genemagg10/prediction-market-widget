@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0205E401ABA94E0DC06C37FD /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627F80C8566407B4F754679 /* Market.swift */; };
+		2374C9D760468D69EF4DB55E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9279440A9922E68D510F66 /* ContentView.swift */; };
+		355BE2F4410CFE17348CCD27 /* PredictionMarketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9FAE0CFA24B7B51A18F6EC /* PredictionMarketApp.swift */; };
+		35733D4F816B6678221E66DF /* PolymarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E2B8675FA3ADD5C12C0DCB /* PolymarketService.swift */; };
+		3F8B5DF5611362CF1114E074 /* MarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF1D8A28BA5BAF5D00DC9B /* MarketService.swift */; };
+		542564ABA3F6528C0843B28D /* CategoryIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595EC9E5B3CDC53B9CBA6805 /* CategoryIntent.swift */; };
+		5EA15070A328D65633EB43C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B1ADCB16C256082D0FA8AF5 /* Assets.xcassets */; };
+		685A8DEB9E06F744E861ED26 /* MarketCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */; };
+		6BAD9F1F8CD7E78EBEE6BE72 /* WidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6B05FCAC47CBC5EE455CCF /* WidgetEntryView.swift */; };
+		750F7300C13155708CAAC16D /* MarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF1D8A28BA5BAF5D00DC9B /* MarketService.swift */; };
+		83C5A158FE3B09F840FB1829 /* KalshiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98D6C192DF746B4BBE33F78 /* KalshiService.swift */; };
+		8465C11B46AD0D9FA12EC16B /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = F627F80C8566407B4F754679 /* Market.swift */; };
+		8BF650635561F6E6FDF7BE5C /* Market+Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2412939F9E9099D824D8D6F /* Market+Placeholders.swift */; };
+		8F34AEAB6CAFBBBFB70A4A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEB69F3F4231B1F59430DCD9 /* Assets.xcassets */; };
+		9174FE695FC4792029766049 /* KalshiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98D6C192DF746B4BBE33F78 /* KalshiService.swift */; };
+		AC11852D44F26AEA1E3612F7 /* PolymarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E2B8675FA3ADD5C12C0DCB /* PolymarketService.swift */; };
+		B7BD28FC2DD37867B1AD17DD /* PredictionMarketWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4638D15E0075292E332C9B4 /* PredictionMarketWidget.swift */; };
+		B86082144E69E42E665217F7 /* PredictionMarketWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADB0C9CA40314BCB29FBDF6D /* PredictionMarketWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C247B18144974AF253F0F8FA /* PredictionMarketWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A42BA017C6FF17D76B608F /* PredictionMarketWidgetBundle.swift */; };
+		D1EBF13766DB505AB47D3403 /* MarketFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206BAD8ECEE82B8FFCD4C93 /* MarketFetcher.swift */; };
+		D6AD25399BBDCDD49625B881 /* MarketCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */; };
+		F1A9F186A1C130626581BCCB /* Market+Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2412939F9E9099D824D8D6F /* Market+Placeholders.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		277F2A26B5B94E6DC41CCA66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF91C9E0B039D72BC301A900 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6FFAD3226B8B41571D584949;
+			remoteInfo = PredictionMarketWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B847EAB5ED1E2EDCCEDAF61D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B86082144E69E42E665217F7 /* PredictionMarketWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0206BAD8ECEE82B8FFCD4C93 /* MarketFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketFetcher.swift; sourceTree = "<group>"; };
+		09A42BA017C6FF17D76B608F /* PredictionMarketWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionMarketWidgetBundle.swift; sourceTree = "<group>"; };
+		09E2B8675FA3ADD5C12C0DCB /* PolymarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolymarketService.swift; sourceTree = "<group>"; };
+		1ED741D3902273CF2F6749F8 /* PredictionMarketWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PredictionMarketWidget.entitlements; sourceTree = "<group>"; };
+		33E9514504C3ED7C22A9CCBB /* PredictionMarketWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PredictionMarketWidgetExtension.entitlements; sourceTree = "<group>"; };
+		3465EF9D3D4B73F85F39DA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3680C14D9E977BE0CDEDAB17 /* PredictionMarketWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredictionMarketWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B1ADCB16C256082D0FA8AF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		595EC9E5B3CDC53B9CBA6805 /* CategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIntent.swift; sourceTree = "<group>"; };
+		6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCategory.swift; sourceTree = "<group>"; };
+		7E6B05FCAC47CBC5EE455CCF /* WidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetEntryView.swift; sourceTree = "<group>"; };
+		8B9FAE0CFA24B7B51A18F6EC /* PredictionMarketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionMarketApp.swift; sourceTree = "<group>"; };
+		A4638D15E0075292E332C9B4 /* PredictionMarketWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionMarketWidget.swift; sourceTree = "<group>"; };
+		ADB0C9CA40314BCB29FBDF6D /* PredictionMarketWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PredictionMarketWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9279440A9922E68D510F66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BBCF1D8A28BA5BAF5D00DC9B /* MarketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketService.swift; sourceTree = "<group>"; };
+		C98D6C192DF746B4BBE33F78 /* KalshiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KalshiService.swift; sourceTree = "<group>"; };
+		D2412939F9E9099D824D8D6F /* Market+Placeholders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Market+Placeholders.swift"; sourceTree = "<group>"; };
+		EEB69F3F4231B1F59430DCD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F627F80C8566407B4F754679 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1668F3C8B17B8C7648944FFE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3B1ADCB16C256082D0FA8AF5 /* Assets.xcassets */,
+				BB9279440A9922E68D510F66 /* ContentView.swift */,
+				0206BAD8ECEE82B8FFCD4C93 /* MarketFetcher.swift */,
+				8B9FAE0CFA24B7B51A18F6EC /* PredictionMarketApp.swift */,
+				1ED741D3902273CF2F6749F8 /* PredictionMarketWidget.entitlements */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		93493336CB53D08E9D7B6783 = {
+			isa = PBXGroup;
+			children = (
+				1668F3C8B17B8C7648944FFE /* App */,
+				E703359A2975F6FDC1EA9D15 /* Shared */,
+				AF12E960D1AF037B67476D2B /* WidgetExtension */,
+				EFAD9931AFB2806F14B1EE56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF12E960D1AF037B67476D2B /* WidgetExtension */ = {
+			isa = PBXGroup;
+			children = (
+				EEB69F3F4231B1F59430DCD9 /* Assets.xcassets */,
+				595EC9E5B3CDC53B9CBA6805 /* CategoryIntent.swift */,
+				3465EF9D3D4B73F85F39DA72 /* Info.plist */,
+				A4638D15E0075292E332C9B4 /* PredictionMarketWidget.swift */,
+				09A42BA017C6FF17D76B608F /* PredictionMarketWidgetBundle.swift */,
+				33E9514504C3ED7C22A9CCBB /* PredictionMarketWidgetExtension.entitlements */,
+				7E6B05FCAC47CBC5EE455CCF /* WidgetEntryView.swift */,
+			);
+			path = WidgetExtension;
+			sourceTree = "<group>";
+		};
+		B2B8078CE2C0BE4BEFF88F34 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F627F80C8566407B4F754679 /* Market.swift */,
+				D2412939F9E9099D824D8D6F /* Market+Placeholders.swift */,
+				6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D12367A65DA675FDD64D9467 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C98D6C192DF746B4BBE33F78 /* KalshiService.swift */,
+				BBCF1D8A28BA5BAF5D00DC9B /* MarketService.swift */,
+				09E2B8675FA3ADD5C12C0DCB /* PolymarketService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E703359A2975F6FDC1EA9D15 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B2B8078CE2C0BE4BEFF88F34 /* Models */,
+				D12367A65DA675FDD64D9467 /* Services */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		EFAD9931AFB2806F14B1EE56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3680C14D9E977BE0CDEDAB17 /* PredictionMarketWidget.app */,
+				ADB0C9CA40314BCB29FBDF6D /* PredictionMarketWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6FFAD3226B8B41571D584949 /* PredictionMarketWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39A43BE8686A7A87BFC53CBF /* Build configuration list for PBXNativeTarget "PredictionMarketWidgetExtension" */;
+			buildPhases = (
+				22C9136BBBB977F9D5434739 /* Sources */,
+				C33DA3988A480F467966B96B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PredictionMarketWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = PredictionMarketWidgetExtension;
+			productReference = ADB0C9CA40314BCB29FBDF6D /* PredictionMarketWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		8DD0BE437045427A1B9378DE /* PredictionMarketWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A60B4DA52D9EDDF45D173A93 /* Build configuration list for PBXNativeTarget "PredictionMarketWidget" */;
+			buildPhases = (
+				32FDC6354A2593E82ECC0694 /* Sources */,
+				F9963264CCF82BA49DF3FE31 /* Resources */,
+				B847EAB5ED1E2EDCCEDAF61D /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD6D2C463A05B2B821089844 /* PBXTargetDependency */,
+			);
+			name = PredictionMarketWidget;
+			packageProductDependencies = (
+			);
+			productName = PredictionMarketWidget;
+			productReference = 3680C14D9E977BE0CDEDAB17 /* PredictionMarketWidget.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF91C9E0B039D72BC301A900 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 3224E4A52F4AF79258453383 /* Build configuration list for PBXProject "PredictionMarketWidget" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 93493336CB53D08E9D7B6783;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EFAD9931AFB2806F14B1EE56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD0BE437045427A1B9378DE /* PredictionMarketWidget */,
+				6FFAD3226B8B41571D584949 /* PredictionMarketWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C33DA3988A480F467966B96B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F34AEAB6CAFBBBFB70A4A36 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9963264CCF82BA49DF3FE31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EA15070A328D65633EB43C5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22C9136BBBB977F9D5434739 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				542564ABA3F6528C0843B28D /* CategoryIntent.swift in Sources */,
+				9174FE695FC4792029766049 /* KalshiService.swift in Sources */,
+				F1A9F186A1C130626581BCCB /* Market+Placeholders.swift in Sources */,
+				8465C11B46AD0D9FA12EC16B /* Market.swift in Sources */,
+				D6AD25399BBDCDD49625B881 /* MarketCategory.swift in Sources */,
+				3F8B5DF5611362CF1114E074 /* MarketService.swift in Sources */,
+				AC11852D44F26AEA1E3612F7 /* PolymarketService.swift in Sources */,
+				B7BD28FC2DD37867B1AD17DD /* PredictionMarketWidget.swift in Sources */,
+				C247B18144974AF253F0F8FA /* PredictionMarketWidgetBundle.swift in Sources */,
+				6BAD9F1F8CD7E78EBEE6BE72 /* WidgetEntryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32FDC6354A2593E82ECC0694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2374C9D760468D69EF4DB55E /* ContentView.swift in Sources */,
+				83C5A158FE3B09F840FB1829 /* KalshiService.swift in Sources */,
+				8BF650635561F6E6FDF7BE5C /* Market+Placeholders.swift in Sources */,
+				0205E401ABA94E0DC06C37FD /* Market.swift in Sources */,
+				685A8DEB9E06F744E861ED26 /* MarketCategory.swift in Sources */,
+				D1EBF13766DB505AB47D3403 /* MarketFetcher.swift in Sources */,
+				750F7300C13155708CAAC16D /* MarketService.swift in Sources */,
+				35733D4F816B6678221E66DF /* PolymarketService.swift in Sources */,
+				355BE2F4410CFE17348CCD27 /* PredictionMarketApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FD6D2C463A05B2B821089844 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6FFAD3226B8B41571D584949 /* PredictionMarketWidgetExtension */;
+			targetProxy = 277F2A26B5B94E6DC41CCA66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		31C99DD6C0C05E94231478C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/PredictionMarketWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Prediction Markets";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3E9136EF6BFF53B89C043B2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/PredictionMarketWidgetExtension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget.widget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6EE904C7B8877504DFCF1210 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/PredictionMarketWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Prediction Markets";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		84D81AE7E04534F8DD7E4BD1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension/PredictionMarketWidgetExtension.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = WidgetExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget.widget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		B2AB4C4CDF6BA9E7985DA3D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		D4540E9FB328DEFB21DFBE63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3224E4A52F4AF79258453383 /* Build configuration list for PBXProject "PredictionMarketWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2AB4C4CDF6BA9E7985DA3D3 /* Debug */,
+				D4540E9FB328DEFB21DFBE63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		39A43BE8686A7A87BFC53CBF /* Build configuration list for PBXNativeTarget "PredictionMarketWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84D81AE7E04534F8DD7E4BD1 /* Debug */,
+				3E9136EF6BFF53B89C043B2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A60B4DA52D9EDDF45D173A93 /* Build configuration list for PBXNativeTarget "PredictionMarketWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6EE904C7B8877504DFCF1210 /* Debug */,
+				31C99DD6C0C05E94231478C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EF91C9E0B039D72BC301A900 /* Project object */;
+}

@@ -1,25 +1,21 @@
 import Foundation
 
-// NOTE: Kalshi's public markets API requires an API key.
-// Add your key in Settings (via the companion app) and it will be stored
-// in UserDefaults so both the app and widget can access it.
-// Without a key this service returns an empty array gracefully.
+// Kalshi's public markets endpoint is read-only and does not require auth.
+// Trading endpoints require RSA-signed requests, but for market data we
+// hit the public endpoint anonymously.
 
 struct KalshiService: Sendable {
-    private let baseURL = "https://trading-api.kalshi.com/trade-api/v2"
+    private let baseURL = "https://api.elections.kalshi.com/trade-api/v2"
 
-    func fetchMarkets(category: MarketCategory, apiKey: String) async throws -> [Market] {
-        guard !apiKey.isEmpty else { return [] }
-
+    func fetchMarkets(category: MarketCategory) async throws -> [Market] {
         var components = URLComponents(string: "\(baseURL)/markets")!
         components.queryItems = [
             URLQueryItem(name: "status", value: "open"),
-            URLQueryItem(name: "limit", value: "40"),
+            URLQueryItem(name: "limit", value: "200"),
         ]
 
         var request = URLRequest(url: components.url!)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue(apiKey, forHTTPHeaderField: "Authorization")
 
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {

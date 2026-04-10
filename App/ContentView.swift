@@ -4,8 +4,6 @@ import WidgetKit
 struct ContentView: View {
     @StateObject private var fetcher = MarketFetcher()
     @State private var selectedCategory: MarketCategory = .trending
-    @State private var kalshiKey: String = UserDefaults.standard.string(forKey: "com.genemagg10.PredictionMarketWidget.kalshiKey") ?? ""
-    @State private var showSettings = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -14,16 +12,6 @@ struct ContentView: View {
                 Text("Prediction Markets")
                     .font(.title2.bold())
                 Spacer()
-                Button {
-                    showSettings.toggle()
-                } label: {
-                    Image(systemName: "gear")
-                }
-                .buttonStyle(.plain)
-                .popover(isPresented: $showSettings) {
-                    SettingsView(kalshiKey: $kalshiKey)
-                }
-
                 Button {
                     fetcher.refreshWidget()
                     Task { await fetcher.fetch(category: selectedCategory) }
@@ -157,38 +145,5 @@ struct SourceBadge: View {
             .background(source == .polymarket ? Color.purple.opacity(0.15) : Color.green.opacity(0.15))
             .foregroundStyle(source == .polymarket ? Color.purple : Color.green)
             .clipShape(RoundedRectangle(cornerRadius: 4))
-    }
-}
-
-// MARK: - Settings popover
-
-struct SettingsView: View {
-    @Binding var kalshiKey: String
-    private let keyDefault = "com.genemagg10.PredictionMarketWidget.kalshiKey"
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Settings")
-                .font(.headline)
-
-            Divider()
-
-            Text("Kalshi API Key")
-                .font(.subheadline.bold())
-            Text("Required to fetch Kalshi markets. Get your key at kalshi.com.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-
-            SecureField("Paste API key here…", text: $kalshiKey)
-                .textFieldStyle(.roundedBorder)
-
-            Button("Save") {
-                UserDefaults.standard.set(kalshiKey, forKey: keyDefault)
-            }
-            .buttonStyle(.borderedProminent)
-            .controlSize(.small)
-        }
-        .padding()
-        .frame(width: 300)
     }
 }

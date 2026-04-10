@@ -1,22 +1,29 @@
 import Foundation
 
+/// App Group identifier — must match the entitlement declared in `project.yml`
+/// for both the app and widget extension targets.
+enum AppGroup {
+    static let identifier = "group.com.genemagg10.PredictionMarketWidget"
+
+    /// Shared UserDefaults visible to both the app and the widget extension.
+    static var defaults: UserDefaults {
+        UserDefaults(suiteName: identifier) ?? .standard
+    }
+}
+
 struct MarketService: Sendable {
     static let shared = MarketService()
 
     private let polymarket = PolymarketService()
     private let kalshi = KalshiService()
 
-    private let kalshiKeyDefault = "com.genemagg10.PredictionMarketWidget.kalshiKey"
-
     func fetchAll(category: MarketCategory) async -> [Market] {
-        let kalshiKey = UserDefaults.standard.string(forKey: kalshiKeyDefault) ?? ""
-
         async let polyFetch = fetchSafely { try await polymarket.fetchMarkets(category: category) }
-        async let kalshiFetch = fetchSafely { try await kalshi.fetchMarkets(category: category, apiKey: kalshiKey) }
+        async let kalshiFetch = fetchSafely { try await kalshi.fetchMarkets(category: category) }
 
         var combined = await polyFetch + kalshiFetch
 
-        // For category filters, narrow down by category tag
+        // For category filters, narrow down by detected category
         if category != .trending {
             combined = combined.filter { $0.category == category }
         }

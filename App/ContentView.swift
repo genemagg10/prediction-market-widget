@@ -55,8 +55,11 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List(fetcher.markets) { market in
-                    MarketListRow(market: market)
-                        .listRowSeparator(.visible)
+                    Link(destination: market.url) {
+                        MarketListRow(market: market)
+                    }
+                    .buttonStyle(.plain)
+                    .listRowSeparator(.visible)
                 }
                 .listStyle(.plain)
             }

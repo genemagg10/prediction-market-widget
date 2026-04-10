@@ -24,6 +24,7 @@ struct PolymarketService: Sendable {
 private struct RawMarket: Codable {
     let id: String
     let question: String
+    let slug: String?
     let outcomePrices: String?   // JSON-encoded string: "[\"0.64\",\"0.36\"]"
     let volume24hr: Double?
     let volume: Double?
@@ -51,6 +52,13 @@ private struct RawMarket: Codable {
             ? detectCategory(from: tags)
             : requestedCategory
 
+        let marketURL: URL = {
+            if let slug, let url = URL(string: "https://polymarket.com/event/\(slug)") {
+                return url
+            }
+            return URL(string: "https://polymarket.com")!
+        }()
+
         return Market(
             id: "poly-\(id)",
             question: question,
@@ -59,7 +67,8 @@ private struct RawMarket: Codable {
             totalVolume: volume ?? 0,
             category: category,
             source: .polymarket,
-            endDate: endDate
+            endDate: endDate,
+            url: marketURL
         )
     }
 

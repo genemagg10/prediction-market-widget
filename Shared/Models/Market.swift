@@ -9,6 +9,7 @@ struct Market: Codable, Identifiable, Hashable, Sendable {
     let category: MarketCategory
     let source: MarketSource
     let endDate: Date?
+    let url: URL
 
     var probabilityPercent: Int {
         Int((probability * 100).rounded())

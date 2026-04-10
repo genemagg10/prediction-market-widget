@@ -35,6 +35,7 @@ private struct KalshiMarketsResponse: Codable {
 
 private struct RawMarket: Codable {
     let ticker: String
+    let eventTicker: String?
     let title: String
     let yesAsk: Int?
     let yesBid: Int?
@@ -47,6 +48,7 @@ private struct RawMarket: Codable {
 
     enum CodingKeys: String, CodingKey {
         case ticker, title, status, category, volume
+        case eventTicker = "event_ticker"
         case yesAsk   = "yes_ask"
         case yesBid   = "yes_bid"
         case lastPrice = "last_price"
@@ -73,6 +75,17 @@ private struct RawMarket: Codable {
 
         let endDate: Date? = closeTime.flatMap { ISO8601DateFormatter().date(from: $0) }
 
+        // Kalshi URLs use the lowercased series (first `-`-delimited segment of
+        // the event ticker, or the market ticker if event_ticker is absent).
+        let seriesSource = eventTicker ?? ticker
+        let series = seriesSource.split(separator: "-").first.map(String.init)?.lowercased()
+        let marketURL: URL = {
+            if let series, let url = URL(string: "https://kalshi.com/markets/\(series)") {
+                return url
+            }
+            return URL(string: "https://kalshi.com")!
+        }()
+
         return Market(
             id: "kalshi-\(ticker)",
             question: title,
@@ -81,7 +94,8 @@ private struct RawMarket: Codable {
             totalVolume: Double(volume ?? 0),
             category: cat,
             source: .kalshi,
-            endDate: endDate
+            endDate: endDate,
+            url: marketURL
         )
     }
 

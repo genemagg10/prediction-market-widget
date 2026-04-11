@@ -28,12 +28,12 @@ struct WidgetEntryView: View {
                 rowView(for: market)
                     .frame(
                         maxWidth: .infinity,
-                        maxHeight: isLarge ? .infinity : nil,
+                        maxHeight: fillsVertically ? .infinity : nil,
                         alignment: .leading
                     )
             }
 
-            if !isLarge {
+            if !fillsVertically {
                 Spacer(minLength: 0)
             }
         }
@@ -46,6 +46,7 @@ struct WidgetEntryView: View {
     }
 
     private var isLarge: Bool { family == .systemLarge }
+    private var fillsVertically: Bool { family == .systemLarge || family == .systemSmall }
 
     private var glassBackground: some View {
         ZStack {
@@ -84,10 +85,15 @@ struct WidgetEntryView: View {
                 .font(.caption2.bold())
                 .foregroundStyle(.secondary)
                 .kerning(0.5)
-            Spacer()
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+            Spacer(minLength: 4)
             Text(entry.date, style: .time)
                 .font(.caption2)
                 .foregroundStyle(.tertiary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .fixedSize()
         }
     }
 

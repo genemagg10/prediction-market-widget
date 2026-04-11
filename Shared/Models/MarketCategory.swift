@@ -34,4 +34,17 @@ enum MarketCategory: String, CaseIterable, Codable, Hashable, Sendable, AppEnum 
         case .other:         return "ellipsis.circle"
         }
     }
+
+    var emoji: String {
+        switch self {
+        case .trending:      return "🔥"
+        case .politics:      return "🏛️"
+        case .sports:        return "🏆"
+        case .crypto:        return "🪙"
+        case .finance:       return "💰"
+        case .science:       return "🔬"
+        case .entertainment: return "🎬"
+        case .other:         return "🔖"
+        }
+    }
 }

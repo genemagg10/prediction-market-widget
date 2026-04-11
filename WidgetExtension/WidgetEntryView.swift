@@ -118,9 +118,8 @@ struct WidgetMarketRow: View {
 
     var body: some View {
         HStack(spacing: 6) {
-            Circle()
-                .fill(market.source == .polymarket ? Color.purple : Color.green)
-                .frame(width: 6, height: 6)
+            Text(market.category.emoji)
+                .font(.caption)
 
             Text(market.question)
                 .font(.caption)

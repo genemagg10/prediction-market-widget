@@ -22,17 +22,22 @@ struct WidgetEntryView: View {
             Divider()
                 .padding(.bottom, 4)
 
-            VStack(alignment: .leading, spacing: isLarge ? 4 : 6) {
-                ForEach(marketsToShow) { market in
-                    rowView(for: market)
-                }
+            ForEach(marketsToShow) { market in
+                rowView(for: market)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: isLarge ? .infinity : nil,
+                        alignment: .leading
+                    )
             }
 
-            Spacer(minLength: 0)
+            if !isLarge {
+                Spacer(minLength: 0)
+            }
         }
         .padding(12)
         .containerBackground(.background, for: .widget)
-        // In small widgets only one URL is supported; tap anywhere opens the top market.
+        // Small widgets only support a single URL — tap anywhere opens the top market.
         .widgetURL(family == .systemSmall ? marketsToShow.first?.url : nil)
     }
 
@@ -56,20 +61,13 @@ struct WidgetEntryView: View {
 
     @ViewBuilder
     private func rowView(for market: Market) -> some View {
-        let row = WidgetMarketRow(market: market, style: rowStyle)
+        let row = WidgetMarketRow(market: market, compact: family == .systemSmall)
         if family != .systemSmall {
-            // Medium and large support multiple Link taps per widget.
-            Link(destination: market.url) { row }
+            Link(destination: market.url) {
+                row.contentShape(Rectangle())
+            }
         } else {
             row
-        }
-    }
-
-    private var rowStyle: WidgetMarketRow.Style {
-        switch family {
-        case .systemSmall:  return .compact
-        case .systemLarge:  return .dense
-        default:            return .standard
         }
     }
 }
@@ -77,10 +75,8 @@ struct WidgetEntryView: View {
 // MARK: - Widget row
 
 struct WidgetMarketRow: View {
-    enum Style { case compact, standard, dense }
-
     let market: Market
-    let style: Style
+    let compact: Bool
 
     var body: some View {
         HStack(spacing: 6) {
@@ -89,46 +85,22 @@ struct WidgetMarketRow: View {
                 .frame(width: 6, height: 6)
 
             Text(market.question)
-                .font(questionFont)
-                .lineLimit(lineLimit)
+                .font(.caption)
+                .lineLimit(compact ? 1 : 2)
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(alignment: .trailing, spacing: 0) {
                 Text("\(market.probabilityPercent)%")
-                    .font(probabilityFont)
+                    .font(.caption.bold())
                     .monospacedDigit()
                     .foregroundStyle(probabilityColor(market.probability))
-                if style == .standard {
+                if !compact {
                     Text(market.formattedVolume)
                         .font(.system(size: 9))
                         .foregroundStyle(.tertiary)
                 }
             }
-        }
-    }
-
-    private var questionFont: Font {
-        switch style {
-        case .compact:  return .caption
-        case .standard: return .caption
-        case .dense:    return .caption2
-        }
-    }
-
-    private var probabilityFont: Font {
-        switch style {
-        case .compact:  return .caption.bold()
-        case .standard: return .caption.bold()
-        case .dense:    return .caption2.bold()
-        }
-    }
-
-    private var lineLimit: Int {
-        switch style {
-        case .compact:  return 1
-        case .standard: return 2
-        case .dense:    return 2
         }
     }
 

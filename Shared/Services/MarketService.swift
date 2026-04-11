@@ -21,17 +21,32 @@ struct MarketService: Sendable {
         async let polyFetch = fetchSafely { try await polymarket.fetchMarkets(category: category) }
         async let kalshiFetch = fetchSafely { try await kalshi.fetchMarkets(category: category) }
 
-        var combined = await polyFetch + kalshiFetch
+        var polyMarkets = await polyFetch
+        var kalshiMarkets = await kalshiFetch
 
-        // For category filters, narrow down by detected category
         if category != .trending {
-            combined = combined.filter { $0.category == category }
+            polyMarkets = polyMarkets.filter { $0.category == category }
+            kalshiMarkets = kalshiMarkets.filter { $0.category == category }
         }
 
-        // Sort by 24h volume descending
-        combined.sort { $0.volume24h > $1.volume24h }
-        let top = Array(combined.prefix(25))
-        return Self.annotateWithTrends(top)
+        // Rank each source by 24h volume within itself. We can't just merge
+        // and sort globally — Polymarket markets trade at ~100x the dollar
+        // volume of Kalshi, so a global sort pushes every Kalshi market off
+        // the end and the widget ends up Polymarket-only.
+        polyMarkets.sort { $0.volume24h > $1.volume24h }
+        kalshiMarkets.sort { $0.volume24h > $1.volume24h }
+
+        // Round-robin interleave so both sources appear in any top-N view.
+        let topPoly = Array(polyMarkets.prefix(15))
+        let topKalshi = Array(kalshiMarkets.prefix(15))
+        var combined: [Market] = []
+        combined.reserveCapacity(topPoly.count + topKalshi.count)
+        for i in 0..<Swift.max(topPoly.count, topKalshi.count) {
+            if i < topPoly.count { combined.append(topPoly[i]) }
+            if i < topKalshi.count { combined.append(topKalshi[i]) }
+        }
+
+        return Self.annotateWithTrends(Array(combined.prefix(25)))
     }
 
     private func fetchSafely(_ block: @Sendable () async throws -> [Market]) async -> [Market] {

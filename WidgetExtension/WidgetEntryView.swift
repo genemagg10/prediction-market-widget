@@ -24,7 +24,11 @@ struct WidgetEntryView: View {
                 .opacity(0.4)
                 .padding(.bottom, 4)
 
-            ForEach(marketsToShow) { market in
+            ForEach(Array(marketsToShow.enumerated()), id: \.element.id) { index, market in
+                if index > 0 {
+                    Divider()
+                        .opacity(0.35)
+                }
                 rowView(for: market)
                     .frame(
                         maxWidth: .infinity,
@@ -135,10 +139,15 @@ struct WidgetMarketRow: View {
             .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(alignment: .trailing, spacing: 0) {
-                Text("\(market.probabilityPercent)%")
-                    .font(.caption.bold())
-                    .monospacedDigit()
-                    .foregroundStyle(probabilityColor(market.probability))
+                HStack(spacing: 2) {
+                    if let trend = market.trend {
+                        TrendArrow(trend: trend)
+                    }
+                    Text("\(market.probabilityPercent)%")
+                        .font(.caption.bold())
+                        .monospacedDigit()
+                        .foregroundStyle(probabilityColor(market.probability))
+                }
                 if !compact {
                     Text(market.formattedVolume)
                         .font(.system(size: 9))
@@ -150,5 +159,28 @@ struct WidgetMarketRow: View {
 
     private func probabilityColor(_ p: Double) -> Color {
         p >= 0.65 ? .green : p >= 0.4 ? .orange : .red
+    }
+}
+
+// MARK: - Trend arrow
+
+struct TrendArrow: View {
+    let trend: Market.Trend
+
+    var body: some View {
+        switch trend {
+        case .up:
+            Image(systemName: "arrow.up.right")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.green)
+        case .down:
+            Image(systemName: "arrow.down.right")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.red)
+        case .flat:
+            Image(systemName: "minus")
+                .font(.system(size: 9, weight: .bold))
+                .foregroundStyle(.secondary)
+        }
     }
 }

@@ -10,9 +10,30 @@ struct Market: Codable, Identifiable, Hashable, Sendable {
     let source: MarketSource
     let endDate: Date?
     let url: URL
+    /// Change in probability (0.0–1.0) since the last stored snapshot.
+    /// Nil when no prior snapshot exists (e.g., first fetch).
+    var priceChange: Double? = nil
 
     var probabilityPercent: Int {
         Int((probability * 100).rounded())
+    }
+
+    /// Absolute change in percentage points, e.g. 0.023 → 2 (for "2pp").
+    var priceChangePoints: Int? {
+        priceChange.map { Int(($0 * 100).rounded()) }
+    }
+
+    /// Classified direction: .up / .down / .flat / nil (unknown).
+    /// Uses a 1pp dead-zone so noise doesn't light up arrows.
+    var trend: Trend? {
+        guard let change = priceChange else { return nil }
+        if change >= 0.01 { return .up }
+        if change <= -0.01 { return .down }
+        return .flat
+    }
+
+    enum Trend {
+        case up, down, flat
     }
 
     var formattedVolume: String {

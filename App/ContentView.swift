@@ -164,14 +164,19 @@ struct MarketListRow: View {
             Spacer()
 
             VStack(alignment: .trailing, spacing: 2) {
-                Text("\(market.probabilityPercent)%")
-                    .font(.title3.bold())
-                    .foregroundStyle(probabilityColor(market.probability))
+                HStack(spacing: 4) {
+                    if let trend = market.trend {
+                        trendGlyph(trend)
+                    }
+                    Text("\(market.probabilityPercent)%")
+                        .font(.title3.bold())
+                        .foregroundStyle(probabilityColor(market.probability))
+                }
                 Text(market.formattedVolume)
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
-            .frame(minWidth: 52, alignment: .trailing)
+            .frame(minWidth: 64, alignment: .trailing)
         }
         .padding(.vertical, 6)
         .padding(.horizontal, 10)
@@ -188,6 +193,24 @@ struct MarketListRow: View {
 
     private func probabilityColor(_ p: Double) -> Color {
         p >= 0.65 ? .green : p >= 0.4 ? .orange : .red
+    }
+
+    @ViewBuilder
+    private func trendGlyph(_ trend: Market.Trend) -> some View {
+        switch trend {
+        case .up:
+            Image(systemName: "arrow.up.right")
+                .font(.caption.bold())
+                .foregroundStyle(.green)
+        case .down:
+            Image(systemName: "arrow.down.right")
+                .font(.caption.bold())
+                .foregroundStyle(.red)
+        case .flat:
+            Image(systemName: "minus")
+                .font(.caption.bold())
+                .foregroundStyle(.secondary)
+        }
     }
 }
 

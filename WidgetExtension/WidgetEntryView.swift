@@ -121,11 +121,16 @@ struct WidgetMarketRow: View {
             Text(market.category.emoji)
                 .font(.caption)
 
-            Text(market.question)
-                .font(.caption)
-                .lineLimit(compact ? 1 : 2)
-                .foregroundStyle(.primary)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .leading, spacing: 0) {
+                Text(market.question)
+                    .font(.caption)
+                    .lineLimit(compact ? 1 : 2)
+                    .foregroundStyle(.primary)
+                Text(market.source.rawValue)
+                    .font(.system(size: 9))
+                    .foregroundStyle(.tertiary)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
 
             VStack(alignment: .trailing, spacing: 0) {
                 Text("\(market.probabilityPercent)%")

@@ -126,9 +126,11 @@ struct WidgetMarketRow: View {
                     .font(.caption)
                     .lineLimit(compact ? 1 : 2)
                     .foregroundStyle(.primary)
-                Text(market.source.rawValue)
-                    .font(.system(size: 9))
-                    .foregroundStyle(.tertiary)
+                if !compact {
+                    Text(market.source.rawValue)
+                        .font(.system(size: 9))
+                        .foregroundStyle(.tertiary)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 

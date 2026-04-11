@@ -26,7 +26,7 @@ struct KalshiService: Sendable {
         }
 
         let decoded = try JSONDecoder().decode(KalshiEventsResponse.self, from: data)
-        return decoded.events.flatMap { $0.toMarkets(requestedCategory: category) }
+        return decoded.events.flatMap { $0.toMarkets() }
     }
 }
 
@@ -49,12 +49,10 @@ private struct RawEvent: Codable {
         case seriesTicker = "series_ticker"
     }
 
-    func toMarkets(requestedCategory: MarketCategory) -> [Market] {
+    func toMarkets() -> [Market] {
         guard let markets else { return [] }
 
-        let cat: MarketCategory = requestedCategory == .trending
-            ? mapCategory(category ?? "")
-            : requestedCategory
+        let cat = mapCategory(category ?? "")
 
         // Kalshi market page URL is https://kalshi.com/markets/<series>/<event-slug>
         // The series slug is the lowercased series ticker (or first segment of

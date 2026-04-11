@@ -8,14 +8,19 @@ struct PolymarketService: Sendable {
         components.queryItems = [
             URLQueryItem(name: "active", value: "true"),
             URLQueryItem(name: "closed", value: "false"),
-            URLQueryItem(name: "limit", value: "40"),
+            // Gamma's default response limit is small; pull more so category
+            // filters (applied client-side) have enough candidates.
+            URLQueryItem(name: "limit", value: "100"),
             URLQueryItem(name: "order", value: "volume24hr"),
             URLQueryItem(name: "ascending", value: "false"),
+            // Tags are not included by default — without this flag every
+            // market decodes with tags=nil and ends up categorised as .other.
+            URLQueryItem(name: "include_tag", value: "true"),
         ]
 
         let (data, _) = try await URLSession.shared.data(from: components.url!)
         let raw = try JSONDecoder().decode([RawMarket].self, from: data)
-        return raw.compactMap { $0.toMarket(requestedCategory: category) }
+        return raw.compactMap { $0.toMarket() }
     }
 }
 
@@ -39,7 +44,7 @@ private struct RawMarket: Codable {
     let active: Bool?
     let closed: Bool?
 
-    func toMarket(requestedCategory: MarketCategory) -> Market? {
+    func toMarket() -> Market? {
         guard active == true, closed == false else { return nil }
 
         let prob: Double
@@ -55,10 +60,7 @@ private struct RawMarket: Codable {
 
         let endDateParsed: Date? = endDate.flatMap { ISO8601DateFormatter().date(from: $0) }
         let totalVol = volume.flatMap(Double.init) ?? 0
-
-        let category = requestedCategory == .trending
-            ? detectCategory(from: tags)
-            : requestedCategory
+        let category = detectCategory(from: tags)
 
         let marketURL: URL = {
             if let slug, let url = URL(string: "https://polymarket.com/event/\(slug)") {

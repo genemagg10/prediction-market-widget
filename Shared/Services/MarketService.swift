@@ -67,14 +67,17 @@ struct MarketService: Sendable {
 
         for market in markets {
             var m = market
+
+            // Always keep the snapshot store fresh for eviction, and as a
+            // fallback source for markets whose API didn't provide a trend.
             if let prev = store[market.id] {
-                m.priceChange = market.probability - prev.probability
-                // Only advance the anchor once it's aged past the minimum window.
+                if m.priceChange == nil {
+                    m.priceChange = market.probability - prev.probability
+                }
                 if now.timeIntervalSince(prev.timestamp) >= minimumSnapshotAge {
                     store[market.id] = Snapshot(probability: market.probability, timestamp: now)
                 }
             } else {
-                // First time seeing this market — seed the anchor, leave priceChange nil.
                 store[market.id] = Snapshot(probability: market.probability, timestamp: now)
             }
             annotated.append(m)

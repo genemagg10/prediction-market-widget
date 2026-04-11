@@ -27,9 +27,15 @@ private struct RawMarket: Codable {
     let slug: String?
     let outcomePrices: String?   // JSON-encoded string: "[\"0.64\",\"0.36\"]"
     let volume24hr: Double?
-    let volume: Double?
+    // Polymarket returns total `volume` as a string like "7772042.67". Decode
+    // as String? and parse manually — decoding as Double? throws typeMismatch
+    // and kills the whole response.
+    let volume: String?
+    let oneDayPriceChange: Double?
     let tags: [RawTag]?
-    let endDateIso: String?
+    // `endDate` is a full ISO-8601 datetime; `endDateIso` is a date-only
+    // string. Prefer the former so ISO8601DateFormatter actually parses it.
+    let endDate: String?
     let active: Bool?
     let closed: Bool?
 
@@ -47,7 +53,9 @@ private struct RawMarket: Codable {
             prob = 0.5
         }
 
-        let endDate: Date? = endDateIso.flatMap { ISO8601DateFormatter().date(from: $0) }
+        let endDateParsed: Date? = endDate.flatMap { ISO8601DateFormatter().date(from: $0) }
+        let totalVol = volume.flatMap(Double.init) ?? 0
+
         let category = requestedCategory == .trending
             ? detectCategory(from: tags)
             : requestedCategory
@@ -64,18 +72,19 @@ private struct RawMarket: Codable {
             question: question,
             probability: prob,
             volume24h: volume24hr ?? 0,
-            totalVolume: volume ?? 0,
+            totalVolume: totalVol,
             category: category,
             source: .polymarket,
-            endDate: endDate,
-            url: marketURL
+            endDate: endDateParsed,
+            url: marketURL,
+            priceChange: oneDayPriceChange
         )
     }
 
     private func detectCategory(from tags: [RawTag]?) -> MarketCategory {
         let labels = (tags ?? []).flatMap { [$0.label, $0.slug] }.compactMap { $0?.lowercased() }
         if labels.contains(where: { $0.contains("polit") || $0.contains("elect") }) { return .politics }
-        if labels.contains(where: { $0.contains("sport") || $0.contains("nba") || $0.contains("nfl") || $0.contains("soccer") }) { return .sports }
+        if labels.contains(where: { $0.contains("sport") || $0.contains("nba") || $0.contains("nfl") || $0.contains("soccer") || $0.contains("mlb") || $0.contains("nhl") }) { return .sports }
         if labels.contains(where: { $0.contains("crypto") || $0.contains("bitcoin") || $0.contains("eth") }) { return .crypto }
         if labels.contains(where: { $0.contains("financ") || $0.contains("stock") || $0.contains("econ") }) { return .finance }
         if labels.contains(where: { $0.contains("sci") || $0.contains("tech") || $0.contains("ai") || $0.contains("space") }) { return .science }

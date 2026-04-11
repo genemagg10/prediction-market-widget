@@ -9,6 +9,7 @@ settings:
   base:
     SWIFT_VERSION: "5.9"
     MACOSX_DEPLOYMENT_TARGET: "14.0"
+    ENABLE_HARDENED_RUNTIME: YES
 
 targets:
   PredictionMarketWidget:
@@ -23,7 +24,8 @@ targets:
       properties:
         CFBundleDisplayName: Prediction Markets
         LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
-        NSHumanReadableCopyright: "Copyright © 2025 genemagg10. All rights reserved."
+        LSApplicationCategoryType: public.app-category.finance
+        NSHumanReadableCopyright: "Copyright © 2026 genemagg10. All rights reserved."
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.genemagg10.PredictionMarketWidget

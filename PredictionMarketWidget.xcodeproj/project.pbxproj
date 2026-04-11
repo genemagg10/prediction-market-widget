@@ -25,9 +25,11 @@
 		AC11852D44F26AEA1E3612F7 /* PolymarketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E2B8675FA3ADD5C12C0DCB /* PolymarketService.swift */; };
 		B7BD28FC2DD37867B1AD17DD /* PredictionMarketWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4638D15E0075292E332C9B4 /* PredictionMarketWidget.swift */; };
 		B86082144E69E42E665217F7 /* PredictionMarketWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = ADB0C9CA40314BCB29FBDF6D /* PredictionMarketWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BA37D219A5B2AD8B4490B3B5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5546EDDCF2ECDA2054605B7A /* PrivacyInfo.xcprivacy */; };
 		C247B18144974AF253F0F8FA /* PredictionMarketWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A42BA017C6FF17D76B608F /* PredictionMarketWidgetBundle.swift */; };
 		D1EBF13766DB505AB47D3403 /* MarketFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0206BAD8ECEE82B8FFCD4C93 /* MarketFetcher.swift */; };
 		D6AD25399BBDCDD49625B881 /* MarketCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */; };
+		E544EB28A67AF62DB2C9EB42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5546EDDCF2ECDA2054605B7A /* PrivacyInfo.xcprivacy */; };
 		F1A9F186A1C130626581BCCB /* Market+Placeholders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2412939F9E9099D824D8D6F /* Market+Placeholders.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,7 @@
 		3465EF9D3D4B73F85F39DA72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3680C14D9E977BE0CDEDAB17 /* PredictionMarketWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PredictionMarketWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1ADCB16C256082D0FA8AF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5546EDDCF2ECDA2054605B7A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		595EC9E5B3CDC53B9CBA6805 /* CategoryIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryIntent.swift; sourceTree = "<group>"; };
 		6DBE5452F1A941EEFBF12D73 /* MarketCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCategory.swift; sourceTree = "<group>"; };
 		74BE95264EF639AB27BDEF3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		E703359A2975F6FDC1EA9D15 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5546EDDCF2ECDA2054605B7A /* PrivacyInfo.xcprivacy */,
 				B2B8078CE2C0BE4BEFF88F34 /* Models */,
 				D12367A65DA675FDD64D9467 /* Services */,
 			);
@@ -203,7 +207,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2640;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					6FFAD3226B8B41571D584949 = {
 						ProvisioningStyle = Automatic;
@@ -239,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F34AEAB6CAFBBBFB70A4A36 /* Assets.xcassets in Resources */,
+				BA37D219A5B2AD8B4490B3B5 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EA15070A328D65633EB43C5 /* Assets.xcassets in Resources */,
+				E544EB28A67AF62DB2C9EB42 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,11 +308,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/PredictionMarketWidget.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +319,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget;
-				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -324,11 +327,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/PredictionMarketWidgetExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -338,7 +339,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget.WidgetExtension;
-				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -348,11 +348,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/PredictionMarketWidget.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -361,7 +359,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget;
-				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -370,11 +367,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension/PredictionMarketWidgetExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = WidgetExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -384,7 +379,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.genemagg10.PredictionMarketWidget.WidgetExtension;
-				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -423,12 +417,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 29S32T3JZW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -449,7 +441,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.9;
@@ -490,12 +481,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 29S32T3JZW;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -509,7 +498,6 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;

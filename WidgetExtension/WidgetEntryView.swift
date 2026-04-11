@@ -4,6 +4,7 @@ import WidgetKit
 struct WidgetEntryView: View {
     let entry: MarketEntry
     @Environment(\.widgetFamily) var family
+    @Environment(\.colorScheme) var colorScheme
 
     private var marketsToShow: [Market] {
         switch family {
@@ -20,6 +21,7 @@ struct WidgetEntryView: View {
                 .padding(.bottom, 4)
 
             Divider()
+                .opacity(0.4)
                 .padding(.bottom, 4)
 
             ForEach(marketsToShow) { market in
@@ -36,12 +38,42 @@ struct WidgetEntryView: View {
             }
         }
         .padding(12)
-        .containerBackground(.background, for: .widget)
+        .containerBackground(for: .widget) {
+            glassBackground
+        }
         // Small widgets only support a single URL — tap anywhere opens the top market.
         .widgetURL(family == .systemSmall ? marketsToShow.first?.url : nil)
     }
 
     private var isLarge: Bool { family == .systemLarge }
+
+    private var glassBackground: some View {
+        ZStack {
+            // Adaptive base that follows the system appearance.
+            Color(nsColor: .windowBackgroundColor)
+
+            // Soft liquid-glass gradient tint.
+            LinearGradient(
+                colors: [
+                    Color.accentColor.opacity(colorScheme == .dark ? 0.22 : 0.14),
+                    Color.purple.opacity(colorScheme == .dark ? 0.18 : 0.10),
+                    Color.clear
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+
+            // Subtle top highlight for a glassy edge.
+            LinearGradient(
+                colors: [
+                    Color.white.opacity(colorScheme == .dark ? 0.06 : 0.35),
+                    Color.clear
+                ],
+                startPoint: .top,
+                endPoint: .center
+            )
+        }
+    }
 
     private var header: some View {
         HStack(spacing: 4) {
